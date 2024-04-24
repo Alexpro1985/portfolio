@@ -1,0 +1,25 @@
+{% extends 'portfolio/base.html' %}
+{% block content %}
+
+Hello blog
+
+
+
+<h2>Alex has {{ blogs.count }} writen blog{{ blogs.count|pluralize }}</h2> <!--|pluralize - коректное окончание в слове-->
+{% for blog in blogs %}
+
+<a href="{% url 'blog:detail' blog.id %}"><h2>{{ blog.title }}</h2></a> <!--Тег а делает кликабельность по ссылке-->
+<h5>{{ blog.date|date:'M d Y' }}</h5> <!--Чтобы дата выглядела красивее - |date:'M d Y'-->
+<p>{{ blog.description|striptags|truncatechars:100 }}</p> <!--Ограничение символов: |truncatechars:100-->
+{% endfor %}
+
+{% endblock %}
+
+<!--Можем использовать теги в самом описании(жирный шрифт, новая строка) и |save - нужно прописывать чтобы теги в дискрипшене не отображались на сайте, |striptags - тег оформлегния-->
+
+
+
+
+
+
+
